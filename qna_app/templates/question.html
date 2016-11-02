@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Question {% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<div class="question">
+		<h1>Question {{q_num}}:</h1>
+		<p>{{question.question}}</p>
+	</div>
+	<!-- <button class="btn btn-primary">Upload Answer</button> -->
+	<!-- <input type="file" id="fileUpload"> -->
+
+
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+
+<a href="http://127.0.0.1:8001/media/input_files/alpha_input.txt" download>Download alpha_input.txt</a>
+</div>
+
+
+{%endblock%}
+
