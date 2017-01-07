@@ -12,12 +12,25 @@ from django.conf import settings
 def home(request):
 	return render(request,'home.html',{})
 
-def question(request, q_num):
+def question(request, q_title):
 
 	try:
-		question = Question.objects.get(id=q_num)
+		question = Question.objects.get(title=q_title)
 	except:
 		raise Http404
+
+	if q_title == 'alpha':
+		filename = 'alpha_input.txt'
+		output_file = settings.OUTPUT_FILE_ALPHA
+
+	elif q_title == 'beta':
+		filename = 'beta_input.txt'
+		output_file = settings.OUTPUT_FILE_BETA
+
+	elif q_title == 'gamma':
+		filename = 'gamma_input.txt'
+		output_file = settings.OUTPUT_FILE_GAMMA
+
 
 
 	if request.method == 'POST':
@@ -30,7 +43,7 @@ def question(request, q_num):
 	        newdoc.save()
 
 
-	        fc = filecmp.cmp(settings.INPUT_FILE,settings.OUTPUT_FILE)
+	        fc = filecmp.cmp(settings.INPUT_FILE, output_file)
 	        print(fc)
 	        
 
@@ -60,4 +73,4 @@ def question(request, q_num):
 	else:
 	    form = DocumentForm() 
 	
-	return render(request, 'question.html', {'q_num':q_num, 'question':question,'form': form})
+	return render(request, 'question.html', {'q_num':q_title, 'question':question,'form': form,'filename':filename})

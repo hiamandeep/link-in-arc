@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'qna_pro.urls'
+ROOT_URLCONF = 'linkinarc_pro.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'qna_pro.wsgi.application'
+WSGI_APPLICATION = 'linkinarc_pro.wsgi.application'
 
 
 # Database
@@ -126,9 +126,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
  ]
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'   
 
 INPUT_FILE = os.path.join(BASE_DIR, 'media', 'documents', 'aman.txt')
-OUTPUT_FILE = os.path.join(BASE_DIR, 'media', 'documents', 'alpha_output.txt')
+OUTPUT_FILE_ALPHA = os.path.join(BASE_DIR, 'media', 'documents', 'alpha_output.txt')
+OUTPUT_FILE_BETA = os.path.join(BASE_DIR, 'media', 'documents', 'beta_output.txt')
+OUTPUT_FILE_GAMMA = os.path.join(BASE_DIR, 'media', 'documents', 'gamma_output.txt')
