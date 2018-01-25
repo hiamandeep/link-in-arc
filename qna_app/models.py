@@ -8,6 +8,7 @@ class Question(models.Model):
 	title = models.CharField(max_length=150,null=True)
 	question = models.CharField(max_length=200)
 	inputfile = models.FileField(upload_to='input_files/', default='def_in')
+	outputfile = models.FileField(upload_to='output_files/', default='def_out')
 
 	def __str__(self):
 		return self.title

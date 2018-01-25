@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 import filecmp
 import os
 from django.conf import settings
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Create your views here.
 
 
@@ -19,15 +22,11 @@ def question(request, q_title):
 	except:
 		raise Http404
 
-	if q_title == 'alpha':
-		output_file = settings.OUTPUT_FILE_ALPHA
+	url = question.outputfile.url
+	filenameurl = url[url.rfind("/")+1:] #extract filename from url
 
-	elif q_title == 'beta':
-		output_file = settings.OUTPUT_FILE_BETA
-
-	elif q_title == 'gamma':
-		output_file = settings.OUTPUT_FILE_GAMMA
-
+	#each directory/file should be single entity not like /media/output_files/
+	output_file = os.path.join(BASE_DIR, 'media', 'output_files', filenameurl)
 
 
 	if request.method == 'POST':
