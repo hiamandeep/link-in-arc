@@ -130,6 +130,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'   
 
 INPUT_FILE = os.path.join(BASE_DIR, 'media', 'documents', 'aman.txt')
-OUTPUT_FILE_ALPHA = os.path.join(BASE_DIR, 'media', 'documents', 'alpha_output.txt')
-OUTPUT_FILE_BETA = os.path.join(BASE_DIR, 'media', 'documents', 'beta_output.txt')
-OUTPUT_FILE_GAMMA = os.path.join(BASE_DIR, 'media', 'documents', 'gamma_output.txt')
