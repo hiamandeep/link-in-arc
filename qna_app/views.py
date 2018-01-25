@@ -20,15 +20,12 @@ def question(request, q_title):
 		raise Http404
 
 	if q_title == 'alpha':
-		filename = 'alpha_input.txt'
 		output_file = settings.OUTPUT_FILE_ALPHA
 
 	elif q_title == 'beta':
-		filename = 'beta_input.txt'
 		output_file = settings.OUTPUT_FILE_BETA
 
 	elif q_title == 'gamma':
-		filename = 'gamma_input.txt'
 		output_file = settings.OUTPUT_FILE_GAMMA
 
 
@@ -73,4 +70,4 @@ def question(request, q_title):
 	else:
 	    form = DocumentForm() 
 	
-	return render(request, 'question.html', {'q_num':q_title, 'question':question,'form': form,'filename':filename})
+	return render(request, 'question.html', {'q_num':q_title, 'question':question,'form': form})
