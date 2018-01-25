@@ -60,3 +60,4 @@ Technologies used
 * HTML, CSS, JavaScript
 * Django(Python)
 
+you can try fixing the open issues here https://github.com/lugnitdgp/link-in-arc/issues
