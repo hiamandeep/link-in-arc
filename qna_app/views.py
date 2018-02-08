@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Question, Document
 from .forms import DocumentForm
 from django.http import Http404
@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 import filecmp
 import os
 from django.conf import settings
+from django.contrib.auth import logout
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -70,3 +71,14 @@ def question(request, q_title):
 	    form = DocumentForm() 
 	
 	return render(request, 'question.html', {'q_num':q_title, 'question':question,'form': form})
+
+
+def logout_view(request):
+
+	for key in request.session.keys():
+		print(request.session[key])
+		del request.session[key]
+		print('deleted: ')
+
+	logout(request)
+	return redirect("home")

@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'qna_app',
 ]
 
@@ -64,6 +64,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <- Here
+                'social_django.context_processors.login_redirect', # <- Here
             ],
         },
     },
@@ -130,3 +132,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'   
 
 INPUT_FILE = os.path.join(BASE_DIR, 'media', 'documents', 'aman.txt')
+
+
+
+AUTHENTICATION_BACKENDS = (
+ 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+ 'social_core.backends.google.GoogleOpenId',  # for Google authentication
+ 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+ 'social_core.backends.github.GithubOAuth2',  # for Github authentication
+ 'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+ 
+ 'django.contrib.auth.backends.ModelBackend',
+)
+
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '693071404090-kq4e01rb1t7bcgcodfs81rljuri4r9hn.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FjBvkzoV13Q3_kzGX-R2_tws'
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/question/alpha'
