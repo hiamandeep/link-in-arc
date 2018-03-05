@@ -23,5 +23,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('qna_app.urls')),
-    url(r'^auth/', include('social_django.urls', namespace='social')),  # <- Here
+    url(r'^auth/', include('social_django.urls', namespace='social')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

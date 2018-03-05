@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-{% block title %} Question {% endblock %}
+{% extends 'base.html'%}
+{% block title %} Problem | Link-in Arc  {% endblock %}
 
 {% block body %}
 
@@ -8,29 +8,40 @@
         <div class="col-sm-8">
 
             	<div class="question">
-            		<h1>Question {{q_num}}:</h1>
-            		<p>{{question.question}}</p>
-            	</div>
-            	<!-- <button class="btn btn-primary">Upload Answer</button> -->
-            	<!-- <input type="file" id="fileUpload"> -->
 
-                    <!-- Upload form. Note enctype attribute! -->
-                    <form action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <p>{{ form.non_field_errors }}</p>
-                        <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-                        <p>
-                            {{ form.docfile.errors }}
-                            {{ form.docfile }}
-                        </p>
-                        <p><input class="btn btn-success" type="submit" value="Upload" /></p>
-                    </form>
+
+                    {% block msgblock %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">{{ message }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endblock %}
+                    
+            		<h1>{{question.title}}</h1>
+            		<p>{{question.question|safe}}</p>
+            	</div>
+   
         </div>
         <div class="col-sm-4">
-            <a class="btn btn-primary" style="margin-top:15px;margin-bottom:15px" href="{{question.inputfile.url}}" download><i class="fa fa-download" aria-hidden="true"></i> Download Input File</a>
+            <center><a class="btn btn-primary" style="margin-top:15px;margin-bottom:15px" href="{{question.inputfile.url}}" download><i class="fa fa-download" aria-hidden="true"></i> Download Input File</a></center>
+            <hr>
+            <div style="background-color: #f5f5f5;padding:5px 15px 5px">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>{{ form.non_field_errors }}</p>
+                <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                <p>
+                    {{ form.docfile.errors }}
+                    {{ form.docfile }}
+                </p>
+                <p><input class="btn btn-success" type="submit" value="Upload" /></p>
+            </form>
+            </div>
+            <hr>
+            <pre><center>Score: <b>{{player.score}}</b></center></pre>
         </div>
     </div>
 </div>
 
 {%endblock%}
-
