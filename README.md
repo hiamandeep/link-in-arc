@@ -52,7 +52,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-7. access lia on your web browser `http://127.0.0.1:8000`
+6. access lia on your web browser `http://127.0.0.1:8000`
 
 # Contribute
 

@@ -1,9 +1,35 @@
 {%extends 'base.html'%}
 {%block body%}
 <div class="container">
-<h1 style="font-family: 'Creepster', cursive; text-align:center;font-size:500%">Link-in Arc</h1>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo aut quo debitis harum et velit omnis ipsum laboriosam id, libero recusandae illum saepe maxime sit ducimus enim minus aliquid. Nostrum!
+<!-- <h1 style="font-family: 'Creepster', cursive; text-align:center;font-size:500%">Link-in Arc</h1> -->
+<div class="row">
+	<div class="col-md-12">
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis expedita praesentium placeat dolorem, quod voluptas distinctio similique odit molestias minus numquam qui, ipsa alias modi laborum deserunt magnam iste nemo!
+
+		<center><img src="static/img/logo1.png" alt="logo.png"></center>
+
+
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo aut quo debitis harum et velit omnis ipsum laboriosam id, libero recusandae illum saepe maxime sit ducimus enim minus aliquid. Nostrum!
+
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis expedita praesentium placeat dolorem, quod voluptas distinctio similique odit molestias minus numquam qui, ipsa alias modi laborum deserunt magnam iste nemo!
+		</p>
+		{% if not request.user.is_authenticated %}
+
+		<p style="text-align:center;"><button onclick="window.location='{% url 'social:begin' 'google-oauth2' %}';" class="btn-lg btn-google"><i class="fa fa-google"></i> | Login with Google</button></p>
+
+		{% else %}
+
+		<p style="text-align:center;"><button onclick="window.location='/question';" class="btn-lg btn-success">Continue</button></p>
+
+		{% endif %}
+
+
+		
+	</div>
+
+
+</div>
+
 </div>
 {%endblock%}

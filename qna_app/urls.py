@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from . import views
 
+from qna_app.views import home ,logout_view, question, leaderboard
 
 urlpatterns = [
-	url(r'^$', views.home, name='home'),
-    url(r'^question/(?P<q_title>\w+)/', views.question, name='question'),
+	url(r'^$', home, name='home'),
+    url(r'^question/', question, name='question'),
+    url(r'^leaderboard/$', leaderboard , name='leaderboard'),
+    url(r'^logout/', logout_view, name='logoutview'), 
 ] 
