@@ -10,7 +10,7 @@ class Question(models.Model):
 	title = models.CharField(max_length=150, null=True)
 	question = models.TextField(null=True)
 	inputfile = models.FileField(upload_to='input_files/', default='def_in')
-	outputfile = models.FileField(upload_to='piQtH987P/', default='def_out')
+	outputfile = models.FileField(upload_to='secret_output_folder/', default='def_out')
 	numuser = models.IntegerField(default=0)
 	accuracy = models.FloatField(default=0)
 	wrong = models.IntegerField(default=0)
@@ -31,7 +31,7 @@ class Player(models.Model):
 
 
 class Document(models.Model):
-	docfile = models.FileField(upload_to='XuTz8iWw/')	
+	docfile = models.FileField(upload_to='secret_user_folder/')	
 
 class TotalProblem(models.Model):
 	totalproblem = models.IntegerField(default=100)

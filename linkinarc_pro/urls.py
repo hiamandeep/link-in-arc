@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^magic-auth/admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'', include('qna_app.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
 ] 
