@@ -6,28 +6,34 @@
 <div class="container">
 
     <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      
-      <center><h1>Leaderboard</h1></center>
-      
-        {% if players %}
-        <div class="table-responsive">
-            <table class="table table-hover table-striped table-bordered" style="font-weight:bold;box-shadow: 0px 0px 8px #000">
-                <tr style="background-color:#565555;color:#fff;font-size:18px"> 
-                	<th>#</th><th >Player Name</th><th>Player Score</th><th>Last problem solved at</th>
-                </tr>
-                {% for player in players %}
-                <tr>
-                	<td>{{ player.rank }}</td><td>{{ player.name }}</td>    <td> {{player.score}} </td>    <td> {% if player.score != 0 %}{{player.timestamp}}{%else%}{{ '_' }}{%endif%}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-        {% else %}
-        <strong>There are no players at this moment.</strong>
-        {% endif %}
+        <div class="col-sm-12">
+          
+          <center><h1>Leaderboard</h1></center>
+          
+            {% if players %}
+            <input type="text" style="background-color: #fff; opacity: 0.8; margin-bottom: 1px" class="form-control" id="leaderboard-search" onkeyup="leaderboardSearch()" placeholder="Search for player names..">
+            
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered leaderboard-table" style="font-weight:bold;box-shadow: 0px 0px 8px #000">
+                    <thead>
+                        <tr style="background-color:#565555;color:#fff;font-size:18px"> 
+                        	<th>#</th><th >Player Name</th><th>Username</th><th>Player Score</th><th>Last problem solved at</th>
+                        </tr>
+                    </thead>
+                    {% for player in players %}
+                    <tbody>
+                        <tr>
+                        	<td>{{ player.rank }}</td><td>{{ player.name }}</td><td>{{ player.user }}</td><td> {{player.score}} </td>    <td> {% if player.score != 0 %}{{player.timestamp}}{%else%}-{%endif%}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <strong>There are no players at this moment.</strong>
+            {% endif %}
 
-    </div>
+        </div>
 
     </div>
 </div>

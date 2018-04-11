@@ -1,0 +1,65 @@
+{%load static%}
+  <nav class="navbar navbar-default navbar-fixed">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div style="margin:10px" class="container">
+          <a href="/"><img style="max-width:120px!important;padding:" src="{% static 'img/logo.png'%}" alt=""></img></a>
+          <span style="padding-right: 33px"></span>
+          <img class="hidden-xs" style="max-width:65px!important;margin-left: 15px" src="{% static 'img/glug.png'%}" alt=""></img>
+          <img style="max-width:65px!important;margin-left: 15px" src="{% static 'img/logoavis.png'%}" alt=""></img>
+          </div>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="{{active_h}}"><a href="/#instructions">Instructions</a></li>
+            {%if user.is_authenticated%}
+            <li class="{{active_q}}"><a href="/question/">Problem</a></li>
+            {%endif%}
+            <li  class="{{active_l}}"><a href="/leaderboard/">Leaderboard</a></li>
+            <li><a href="http://www.avskr.in" target="_blank">Aavishkar 2k18</a></li>
+            <li><a target="_blank" href="https://www.facebook.com/events/159226931405609/?active_tab=discussion">Updates</a></li>
+          </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        
+        {% if user.is_authenticated%} 
+
+        <li class="dropdown">
+          <button class="dropdown-toggle btn btn-default navbar-btn" data-toggle="dropdown" style="margin-left:10px;">
+          {% if user.is_authenticated%} 
+          <b>{{ user.get_full_name|default:user.username }}</b>
+          <span9 class="caret"></span9>
+          {%else%}
+          <b>Login</b>
+          {% endif %}
+          
+          </button>
+          
+          <ul class="dropdown-menu">
+
+        <li>
+            <a href="/logout"><b>Logout</b></a>
+ 
+        </li>
+          </ul>
+        </li>
+        
+
+        {%else%}
+  
+          <a class="dropdown-toggle btn btn-default navbar-btn" href="{% url 'social:begin' 'google-oauth2' %}" style="margin-left: 10px;"><b>Log in</b></a>          
+
+        {%endif%}
+
+      </ul>
+
+
+        </div><!--/.nav-collapse -->
+      </div>
+</nav>

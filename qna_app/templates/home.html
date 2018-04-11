@@ -1,19 +1,19 @@
 {%extends 'base.html'%}
 {%block body%}
 <div class="container">
-<!-- <h1 style="font-family: 'Creepster', cursive; text-align:center;font-size:500%">Link-in Arc</h1> -->
 <div class="row">
 	<div class="col-md-12">
 
 
-		<center><img src="static/img/logo1.png" alt="logo.png"></center>
+		<center><img class="hidden-xs" src="static/img/logo.png" class="img-responsive" alt="logo.png"></center>
 
+		<br>
+		<p style="font-size: 20px;text-align:center;">
+		This Aavishkar, GNU/Linux Users's Group brings you Link-In Arc, a <b>reverse coding</b> event.
 
-		<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo aut quo debitis harum et velit omnis ipsum laboriosam id, libero recusandae illum saepe maxime sit ducimus enim minus aliquid. Nostrum!
-
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis expedita praesentium placeat dolorem, quod voluptas distinctio similique odit molestias minus numquam qui, ipsa alias modi laborum deserunt magnam iste nemo!
+		The idea behind this event is to figure out the <b>link</b> between the inputs and outputs in the problem. The event will test your basic logical/mathematical and <b>coding skills</b> as you play with the input/output, deciphering the logic behind the problems!
 		</p>
+		<br>
 		{% if not request.user.is_authenticated %}
 
 		<p style="text-align:center;"><button onclick="window.location='{% url 'social:begin' 'google-oauth2' %}';" class="btn-lg btn-google"><i class="fa fa-google"></i> | Login with Google</button></p>
@@ -23,7 +23,34 @@
 		<p style="text-align:center;"><button onclick="window.location='/question';" class="btn-lg btn-success">Continue</button></p>
 
 		{% endif %}
+		<br>
 
+		<div class="row" style="margin-bottom: 70px">
+			<div class="col-md-8">
+				<div style="box-shadow: 0px 0px 5px 0px #888888;padding: 2 10 2;">
+					<h3>Instructions:</h3>
+					<ul>
+						<li>Open the Problem tab</li>
+						<li>Try to understand the Problem from the given Input and Output Sample</li>
+						<li>Write a Program that will solve the Problem</li>
+						<li>Make sure your program accepts input and gives output in the format given</li>
+						<li>Download the input file and make your program receive the file's content in it's stdin and write the output to output_file.txt or any filename </li>
+						<li>Finally upload your generated output file</li>
+						<li><b>Note: </b>All values are within 10<sup>18</sup></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+		    	<div style="font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 5px 0px #888888; padding: 2 2 2; margin-top: 22px">    
+		  		  	<h2 style="text-align:center;font-size:40px;color:#0C6268">CASH PRIZE</h2>
+		  	    	<p style="text-align:center;font-size:50px;color:#0C6268"> INR 6k</p>          
+			    </div>
+
+			</div>
+		</div>
+			
+		</div>
 
 		
 	</div>

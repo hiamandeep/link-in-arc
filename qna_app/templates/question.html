@@ -9,7 +9,6 @@
 
             	<div class="question">
 
-
                     {% block msgblock %}
                     {% if messages %}
                     {% for message in messages %}
@@ -18,12 +17,12 @@
                     {% endif %}
                     {% endblock %}
                     
-            		<h1>{{question.title}}</h1>
+            		<h2>{{question.title}}</h2>
             		<p>{{question.question|safe}}</p>
             	</div>
    
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="margin-bottom: 50px">
             <center><a class="btn btn-primary" style="margin-top:15px;margin-bottom:15px" href="{{question.inputfile.url}}" download><i class="fa fa-download" aria-hidden="true"></i> Download Input File</a></center>
             <hr>
             <div style="background-color: #f5f5f5;padding:5px 15px 5px">
@@ -39,8 +38,12 @@
             </form>
             </div>
             <hr>
-            <pre><center>Score: <b>{{player.score}}</b></center></pre>
+            <pre><center>Your Score: <b>{{player.score}}</b></center></pre>
+            <hr>
+            <pre><center>No. of people crossed: <b>{{question.numuser}}</b><br>Accuracy: <b>{{question.accuracy}}</b></center></pre>
+
         </div>
+
     </div>
 </div>
 

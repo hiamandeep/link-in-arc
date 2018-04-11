@@ -1,4 +1,13 @@
-.footer{text-align:center;}
 .question{
 	margin-bottom: 24px;
+}
+
+.nav >  li > a {
+  font-family: 'Acme', sans-serif;
+  font-size: 22px;
+
+}
+
+.navbar{
+  box-shadow: 0px 0px 5px 0px #888888;
 }
